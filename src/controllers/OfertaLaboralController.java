@@ -8,7 +8,7 @@ import java.util.*;
 /**
  * 
  */
-public class fertaLaboralController {
+public class OfertaLaboralController {
 
     /**
      * Default constructor
@@ -40,7 +40,8 @@ public class fertaLaboralController {
      * @param int remuneracion 
      * @return
      */
-    public postulante postularse(void postulante, void oferta laboral, void int remuneracion) {
+
+    public postulante postularse( postulante,  ofertalaboral,  remuneracion) {
         // TODO implement here
         return null;
     }
@@ -48,7 +49,7 @@ public class fertaLaboralController {
     /**
      * @param postulacion
      */
-    public void crearPostulacion(void postulacion) {
+    public void crearPostulacion( postulacion) {
         // TODO implement here
     }
 
@@ -62,7 +63,7 @@ public class fertaLaboralController {
     /**
      * @param OfertaLaboral
      */
-    public void generarImagenOfertaLaboral(void OfertaLaboral) {
+    public void generarImagenOfertaLaboral( OfertaLaboral) {
         // TODO implement here
     }
 
@@ -70,7 +71,7 @@ public class fertaLaboralController {
      * @param filtros 
      * @return
      */
-    public List<OfertaLaboralVO> obtenerOfertas(OfertaLaboralVO filtros) {
+    public List<OfertaLaboral> obtenerOfertas(OfertaLaboralVO filtros) {
         // TODO implement here
         return null;
     }
@@ -78,14 +79,14 @@ public class fertaLaboralController {
     /**
      * @param ofertaLaboral
      */
-    public void eliminarPublicacion(void ofertaLaboral) {
+    public void eliminarPublicacion( ofertaLaboral) {
         // TODO implement here
     }
 
     /**
      * @param ofertaLaboral
      */
-    public void reabrirPublicacion(void ofertaLaboral) {
+    public void reabrirPublicacion( ofertaLaboral) {
         // TODO implement here
     }
 
@@ -99,7 +100,7 @@ public class fertaLaboralController {
     /**
      * @param EstrategiaDeGeneracion
      */
-    public void cambiarEstrategiaDeGeneracionDeImagen(void EstrategiaDeGeneracion) {
+    public void cambiarEstrategiaDeGeneracionDeImagen( EstrategiaDeGeneracion) {
         // TODO implement here
     }
 

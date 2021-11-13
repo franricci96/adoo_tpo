@@ -24,7 +24,6 @@ public class Usuario {
     /**
      * 
      */
-    public void Attribute1;
 
 
 

@@ -14,13 +14,12 @@ public class NotificacionPorEmail {
     /**
      * 
      */
-    public void Attribute1;
 
 
     /**
      * @param Notificacion
      */
-    public void enviar(void Notificacion) {
+    public void enviar(Notificacion) {
         // TODO implement here
     }
 

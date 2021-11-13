@@ -1,5 +1,7 @@
 package src.model;
 
+import javax.management.Notification;
+
 /**
  * 
  */
@@ -14,20 +16,20 @@ public class EnviarRecomendacionesListener {
     /**
      * 
      */
-    private void EstrategiaDeNotificacion;
+    private EstrategiaDeNotificacion estrategiaDeNotificacion;
 
 
     /**
      * @param EnviarNotificacion
      */
-    public void enviar(void EnviarNotificacion) {
+    public void enviar(Notificacion) {
         // TODO implement here
     }
 
     /**
      * @param EstrategiaDeNotificacion
      */
-    public void cambiarEstrategiaDeNotificacion(void EstrategiaDeNotificacion) {
+    public void cambiarEstrategiaDeNotificacion(EstrategiaDeNotificacion estrategiaDeNotificacion) {
         // TODO implement here
     }
 

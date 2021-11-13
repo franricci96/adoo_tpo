@@ -15,7 +15,7 @@ public class NotificacionPorWhatsApp {
     /**
      * @param Notificacion
      */
-    public void enviar(void Notificacion) {
+    public void enviar(Notificacion) {
         // TODO implement here
     }
 

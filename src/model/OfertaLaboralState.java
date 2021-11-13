@@ -25,7 +25,7 @@ public abstract class OfertaLaboralState {
     /**
      * @param estado
      */
-    private void cambiarEstado(void estado) {
+    private void cambiarEstado(estado) {
         // TODO implement here
     }
 
@@ -44,7 +44,6 @@ public abstract class OfertaLaboralState {
      */
     public void cerrar(OfertaLaboral ofertaLaboral) {
         // TODO implement here
-        return null;
     }
 
 }

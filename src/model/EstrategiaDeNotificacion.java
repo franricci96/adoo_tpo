@@ -10,6 +10,6 @@ public interface EstrategiaDeNotificacion {
     /**
      * @param Notificacion
      */
-    public void enviar(void Notificacion);
+    public void enviar(Notificacion);
 
 }
