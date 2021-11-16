@@ -14,12 +14,4 @@ public class EnviarNotificacion {
     }
 
 
-    /**
-     * @param postulante 
-     * @param ofertaLaboral
-     */
-    public void enviarNotificacion(Postualante postulante, OfertaLaboral ofertaLaboral) {
-        // TODO implement here
-    }
-
 }

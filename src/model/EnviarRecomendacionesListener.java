@@ -19,18 +19,4 @@ public class EnviarRecomendacionesListener {
     private EstrategiaDeNotificacion estrategiaDeNotificacion;
 
 
-    /**
-     * @param EnviarNotificacion
-     */
-    public void enviar(Notificacion) {
-        // TODO implement here
-    }
-
-    /**
-     * @param EstrategiaDeNotificacion
-     */
-    public void cambiarEstrategiaDeNotificacion(EstrategiaDeNotificacion estrategiaDeNotificacion) {
-        // TODO implement here
-    }
-
 }

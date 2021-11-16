@@ -13,37 +13,4 @@ public abstract class OfertaLaboralState {
     public OfertaLaboralState() {
     }
 
-    /**
-     * @param ofertaLaboral 
-     * @return
-     */
-    public void postularse(OfertaLaboral ofertaLaboral) {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @param estado
-     */
-    private void cambiarEstado(estado) {
-        // TODO implement here
-    }
-
-    /**
-     * @param ofertaLaboral 
-     * @return
-     */
-    public void reabrir(OfertaLaboral ofertaLaboral) {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @param ofertaLaboral 
-     * @return
-     */
-    public void cerrar(OfertaLaboral ofertaLaboral) {
-        // TODO implement here
-    }
-
 }

@@ -1,93 +1,52 @@
 package src.model.entities;
 
-import java.util.*;
+import lombok.Builder;
+import lombok.Data;
+import src.model.states.AbiertoState;
+import src.model.states.CerradoState;
+import src.model.states.OfertaLaboralState;
 
-/**
- * 
- */
+import java.time.LocalDateTime;
+import java.util.List;
+
+@Builder
+@Data
 public class OfertaLaboral {
 
-    /**
-     * Default constructor
-     */
-    public OfertaLaboral() {
-    }
-
-    /**
-     * 
-     */
-    private String estado;
-
-    /**
-     * 
-     */
+    private OfertaLaboralState estado;
     private String titulo;
-
-    /**
-     * 
-     */
-    private Date fechaFin;
-
-    /**
-     * 
-     */
+    private LocalDateTime fechaFin;
     private String descripcion;
-
-    /**
-     * 
-     */
     private String modalidad;
-
-    /**
-     * 
-     */
     private String tipo;
-
-    /**
-     * 
-     */
     private Double sueldo;
-
-    /**
-     * 
-     */
     private String lugar;
-
-    /**
-     * 
-     */
     private String requisitos;
-
-    /**
-     * 
-     */
-    private Datetime fechaCreacion;
-
-    /**
-     * 
-     */
+    private LocalDateTime fechaCreacion;
     private String trabajo;
+    private List<Categoria> categorias;
 
+    private List<Postulacion> postulaciones;
 
+    public Postulacion postularse(Postulante postulante, Double remuneracion) {
+        Postulacion postulacion = Postulacion
+                .builder()
+                .fechaPostulacion(LocalDateTime.now())
+                .postulante(postulante)
+                .remuneracion(remuneracion)
+                .build();
 
+        this.postulaciones.add(postulacion);
+        postulante.getPostulaciones().add(postulacion);
 
-
-
-
-    /**
-     * 
-     */
-    public void postularse() {
-        // TODO implement here
+        return postulacion;
     }
 
-    /**
-     * @param ofertaLaboral 
-     * @return
-     */
-    public void crearOfertaLaboral(OfertaLaboralVO ofertaLaboral) {
-        // TODO implement here
-        return null;
+    public void abrir(){
+        this.estado = new AbiertoState();
     }
 
+    public void cerrar(){
+        this.estado = new CerradoState();
+    }
 }

@@ -2,129 +2,60 @@ package src.controllers;
 
 import src.model.Exportador;
 import src.model.entities.OfertaLaboral;
+import src.model.entities.Postulacion;
+import src.model.entities.Postulante;
+import src.strategies.EstrategiaDeGeneracion;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
-/**
- * 
- */
 public class OfertaLaboralController {
 
-    /**
-     * Default constructor
-     */
+    private EstrategiaDeGeneracion estrategiaDeGeneraciondeImagen;
+    private Exportador exportador;
+    private List<OfertaLaboral> ofertas = new ArrayList();
+
     public OfertaLaboralController() {
     }
 
-    /**
-     * 
-     */
-    private EstrategiaDeGeneracion estrategiaDeGeneraciondeImagen;
-
-    /**
-     * 
-     */
-    private Exportador exportador;
-
-    /**
-     * 
-     */
-    private List<OfertaLaboral> ofertas;
-
-
-
-
-    /**
-     * @param postulante 
-     * @param oferta laboral 
-     * @param int remuneracion 
-     * @return
-     */
-
-    public postulante postularse( postulante,  ofertalaboral,  remuneracion) {
-        // TODO implement here
-        return null;
+    public Postulacion postularse(Postulante postulante, OfertaLaboral ofertaLaboral, Double remuneracion) {
+        return ofertaLaboral.postularse(postulante, remuneracion);
     }
 
-    /**
-     * @param postulacion
-     */
-    public void crearPostulacion( postulacion) {
-        // TODO implement here
+    public void agregarOfertaLaboral(OfertaLaboral ofertaLaboral) {
+        this.ofertas.add(ofertaLaboral);
     }
 
-    /**
-     * 
-     */
-    public void verPostulados() {
-        // TODO implement here
+    public List<Postulacion> verPostulaciones(OfertaLaboral ofertaLaboral) {
+        return ofertaLaboral.getPostulaciones();
     }
 
-    /**
-     * @param OfertaLaboral
-     */
-    public void generarImagenOfertaLaboral( OfertaLaboral) {
-        // TODO implement here
+    public byte[] generarImagenOfertaLaboral(OfertaLaboral ofertaLaboral) {
+        // Logica para generar imagen encodeada en base64;
+        return Base64
+                .getDecoder()
+                .decode("asda");
     }
 
-    /**
-     * @param filtros 
-     * @return
-     */
-    public List<OfertaLaboral> obtenerOfertas(OfertaLaboralVO filtros) {
-        // TODO implement here
-        return null;
+    //TODO: filtros?
+    public List<OfertaLaboral> obtenerOfertas(OfertaLaboral filtros) {
+        return this.ofertas;
     }
 
-    /**
-     * @param ofertaLaboral
-     */
-    public void eliminarPublicacion( ofertaLaboral) {
-        // TODO implement here
+    public boolean eliminarPublicacion(OfertaLaboral oferta) {
+        return this.ofertas.remove(oferta);
     }
 
-    /**
-     * @param ofertaLaboral
-     */
-    public void reabrirPublicacion( ofertaLaboral) {
-        // TODO implement here
+    //TODO: Implementar state
+    public void abrirPublicacion(OfertaLaboral oferta) {
+        oferta.abrir();
     }
 
-    /**
-     * 
-     */
-    private void buscarPublicacion() {
-        // TODO implement here
+    public void cambiarEstrategiaGeneracionImagen(EstrategiaDeGeneracion nuevaEstrategia) {
+        this.estrategiaDeGeneraciondeImagen = nuevaEstrategia;
     }
 
-    /**
-     * @param EstrategiaDeGeneracion
-     */
-    public void cambiarEstrategiaDeGeneracionDeImagen( EstrategiaDeGeneracion) {
-        // TODO implement here
-    }
-
-    /**
-     * 
-     */
-    public void Operation4() {
-        // TODO implement here
-    }
-
-    /**
-     * @param oferta 
-     * @return
-     */
     public String exportar(OfertaLaboral oferta) {
-        // TODO implement here
-        return "";
+        return this.exportador.exportar(oferta);
     }
-
-    /**
-     * 
-     */
-    public void Operation1() {
-        // TODO implement here
-    }
-
 }

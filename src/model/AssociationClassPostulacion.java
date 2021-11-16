@@ -31,11 +31,6 @@ public class AssociationClassPostulacion {
     /**
      * 
      */
-    public Double renumeracion;
-
-    /**
-     * 
-     */
     private String habilidades;
 
 }

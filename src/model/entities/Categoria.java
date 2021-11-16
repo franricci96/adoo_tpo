@@ -1,28 +1,12 @@
 package src.model.entities;
 
-/**
- * 
- */
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+
+@Data
+@AllArgsConstructor
 public class Categoria {
 
-
-    /**
-     * Default constructor
-     */
-    public Categoria() {
-    }
-
-    /**
-     * 
-     */
-    private String desc;
-
-    public String getDesc() {
-        return desc;
-    }
-
-    public void setDesc(String desc) {
-        this.desc = desc;
-    }
-
+    private String nombre;
 }
