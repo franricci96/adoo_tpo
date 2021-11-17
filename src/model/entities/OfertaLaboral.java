@@ -7,6 +7,8 @@ import src.model.states.CerradoState;
 import src.model.states.OfertaLaboralState;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Builder
@@ -26,17 +28,15 @@ public class OfertaLaboral {
     private LocalDateTime fechaCreacion;
     private String trabajo;
     private List<Categoria> categorias;
-
     private List<Postulacion> postulaciones;
 
-    public Postulacion postularse(Postulante postulante, Double remuneracion) {
+    public Postulacion postularse(Postulante postulante, int remuneracion) {
         Postulacion postulacion = Postulacion
                 .builder()
                 .fechaPostulacion(LocalDateTime.now())
                 .postulante(postulante)
                 .remuneracion(remuneracion)
                 .build();
-
         this.postulaciones.add(postulacion);
         postulante.getPostulaciones().add(postulacion);
 

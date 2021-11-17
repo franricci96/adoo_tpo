@@ -24,7 +24,7 @@ public class ReporteController {
         List<OfertaLaboral> ofertasLaborales = this.ofertaLaboralController.obtenerOfertas(null);
 
         return ofertasLaborales.stream()
-                .flatMap(i-> i.getCategorias().stream())
+                .flatMap(i -> i.getCategorias().stream())
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
                 .entrySet().stream()
                 .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
@@ -35,8 +35,13 @@ public class ReporteController {
     }
 
     public OfertaLaboral ofertaLaboralMasPostulantes(LocalDateTime fecha) {
-        // TODO implement here
-        return null;
+        List<OfertaLaboral> ofertasLaborales = this.ofertaLaboralController.obtenerOfertas(null);
+
+        return ofertasLaborales
+                .stream()
+                .filter(of -> of.getPostulaciones() != null)
+                .max(Comparator.comparingInt(a -> a.getPostulaciones().size()))
+                .orElseThrow(() -> new IllegalStateException("No existen ofertas laborales"));
     }
 
     public String trabajoMasAccesible() {

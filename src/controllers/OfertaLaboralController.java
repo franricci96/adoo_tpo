@@ -18,7 +18,7 @@ public class OfertaLaboralController {
     public OfertaLaboralController() {
     }
 
-    public Postulacion postularse(Postulante postulante, OfertaLaboral ofertaLaboral, Double remuneracion) {
+    public Postulacion postularse(Postulante postulante, OfertaLaboral ofertaLaboral, int remuneracion) {
         return ofertaLaboral.postularse(postulante, remuneracion);
     }
 
