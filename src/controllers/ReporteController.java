@@ -4,7 +4,9 @@ import src.model.entities.Categoria;
 import src.model.entities.OfertaLaboral;
 
 import java.lang.reflect.Array;
+import java.time.LocalDateTime;
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
@@ -20,20 +22,19 @@ public class ReporteController {
 
     public List<Categoria> categoriasMasSeleccionadas(int cantidad) {
         List<OfertaLaboral> ofertasLaborales = this.ofertaLaboralController.obtenerOfertas(null);
-        Map<String, List<Categoria>> categoriasMap = ofertasLaborales.stream()
-                .map(OfertaLaboral::getCategorias)
-                .flatMap(List::stream)
-                .collect(Collectors.groupingBy(Categoria::getNombre));
 
-//        return
-//                categoriasMap.values().stream().sorted(Comparator.comparingInt(List::size)).collect(Collectors.toList()).get(   0);
-        return Arrays.asList(
-                new Categoria("it"),
-                new Categoria("rrhh"),
-                new Categoria("marketing"));
+        return ofertasLaborales.stream()
+                .flatMap(i-> i.getCategorias().stream())
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .entrySet().stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .map(Map.Entry::getKey)
+                .limit(cantidad)
+                .collect(Collectors.toList());
+//
     }
 
-    public OfertaLaboral ofertaLaboralMasPostulantes(int fecha) {
+    public OfertaLaboral ofertaLaboralMasPostulantes(LocalDateTime fecha) {
         // TODO implement here
         return null;
     }

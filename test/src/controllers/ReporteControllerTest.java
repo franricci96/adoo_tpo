@@ -7,6 +7,7 @@ import src.controllers.ReporteController;
 import src.model.entities.Categoria;
 import src.model.entities.OfertaLaboral;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
@@ -41,7 +42,7 @@ class ReporteControllerTest {
         olc.agregarOfertaLaboral(OfertaLaboral
                 .builder()
                 .titulo("Titulo de oferta 4")
-                .categorias(List.of(c2))
+                .categorias(List.of(c2,c3))
                 .build()
         );
         this.rc = new ReporteController(olc);
@@ -49,8 +50,14 @@ class ReporteControllerTest {
 
     @org.junit.jupiter.api.Test
     void categoriasMasSeleccionadas() {
-        Assert.assertEquals( "it", this.rc.categoriasMasSeleccionadas(3).get(0).getNombre());
-        Assert.assertEquals( "rrhh", this.rc.categoriasMasSeleccionadas(3).get(1).getNombre());
+        Assert.assertEquals( "rrhh", this.rc.categoriasMasSeleccionadas(3).get(0).getNombre());
+        Assert.assertEquals( "legales", this.rc.categoriasMasSeleccionadas(3).get(1).getNombre());
         Assert.assertEquals( "marketing", this.rc.categoriasMasSeleccionadas(3).get(2).getNombre());
+    }
+
+    @org.junit.jupiter.api.Test
+    void ofertaLaboralMasPostulantes(){
+
+        this.rc.ofertaLaboralMasPostulantes(LocalDateTime.now());
     }
 }

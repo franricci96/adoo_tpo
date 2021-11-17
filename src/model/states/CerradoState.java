@@ -1,24 +1,25 @@
 package src.model.states;
 
 import src.model.entities.OfertaLaboral;
-import src.model.states.OfertaLaboralState;
 
 public class CerradoState extends OfertaLaboralState {
-    public CerradoState() {
+    CerradoState(OfertaLaboral ofertaLaboral) {
+        super(ofertaLaboral);
+        ofertaLaboral.setEstado(this);
     }
 
     @Override
-    public void postularse(OfertaLaboral ofertaLaboral) {
+    public void postularse() {
 
     }
 
     @Override
-    public void abrir(OfertaLaboral ofertaLaboral) {
-
+    public void abrir() {
+        ofertaLaboral.setEstado(new AbiertoState(ofertaLaboral));
     }
 
     @Override
-    public void cerrar(OfertaLaboral ofertaLaboral) {
+    public void cerrar() {
 
     }
 }

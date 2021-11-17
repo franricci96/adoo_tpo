@@ -14,6 +14,7 @@ import java.util.List;
 public class OfertaLaboral {
 
     private OfertaLaboralState estado;
+    private Empresa creador;
     private String titulo;
     private LocalDateTime fechaFin;
     private String descripcion;
@@ -42,11 +43,11 @@ public class OfertaLaboral {
         return postulacion;
     }
 
-    public void abrir(){
-        this.estado = new AbiertoState();
+    public void abrir() {
+        this.estado.abrir();
     }
 
-    public void cerrar(){
-        this.estado = new CerradoState();
+    public void cerrar() {
+        this.estado.cerrar();
     }
 }

@@ -15,6 +15,20 @@ public class Main {
         ReporteController rc = new ReporteController(olc);
         UserController uc = new UserController();
 
+        OfertaLaboral ofl1 = OfertaLaboral
+                .builder()
+                .titulo("titulo")
+                .trabajo("trabajo")
+                .build();
+
+        OfertaLaboral ofl2 = OfertaLaboral
+                .builder()
+                .titulo("titulo")
+                .trabajo("trabajo")
+                .build();
+
+        olc.agregarOfertaLaboral(ofl1);
+        olc.agregarOfertaLaboral(ofl2);
 
     }
 
