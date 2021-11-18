@@ -2,52 +2,48 @@ package src.model.entities;
 
 import lombok.Builder;
 import lombok.Data;
-import src.model.states.AbiertoState;
+import src.model.NotificacionPorEmailListener;
+import src.model.OfertaLaboralObserver;
 import src.model.states.CerradoState;
 import src.model.states.OfertaLaboralState;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+
 
 @Builder
 @Data
 public class OfertaLaboral {
 
+    @Builder.Default
+    public List<OfertaLaboralObserver> observers = List.of(new NotificacionPorEmailListener());
     private OfertaLaboralState estado;
     private Empresa creador;
     private String titulo;
     private LocalDateTime fechaFin;
     private String descripcion;
-    private String modalidad;
-    private String tipo;
-    private Double sueldo;
+    private ModalidadDeContrato modalidadDeContrato;
+    private int sueldo;
     private String lugar;
-    private String requisitos;
-    private LocalDateTime fechaCreacion;
-    private String trabajo;
-    private List<Categoria> categorias;
-    private List<Postulacion> postulaciones;
+    private List<Habilidad> requisitos;
+    private List<String> tareas;
+    @Builder.Default
+    private LocalDateTime fechaCreacion = LocalDateTime.now();
+    private TipoDeTrabajo tipoDeTrabajo;
+    private Categoria categoria;
+    @Builder.Default
+    private List<Postulacion> postulaciones = new ArrayList<>();
+    private Boolean activa;
 
-    public Postulacion postularse(Postulante postulante, int remuneracion) {
-        Postulacion postulacion = Postulacion
-                .builder()
-                .fechaPostulacion(LocalDateTime.now())
-                .postulante(postulante)
-                .remuneracion(remuneracion)
-                .build();
-        this.postulaciones.add(postulacion);
-        postulante.getPostulaciones().add(postulacion);
-
-        return postulacion;
+    public Postulacion postularse(Postulante postulante, int remuneracion, String cv) {
+        return this.getEstado().postularse(postulante, remuneracion, cv);
     }
 
-    public void abrir() {
-        this.estado.abrir();
+    public void validarDatos() {
+        if (this.getTipoDeTrabajo() == TipoDeTrabajo.presencial && this.getLugar().isEmpty()) {
+            throw new RuntimeException("Si la oferta es presencial, indicar el lugar es requerido");
+        }
     }
 
-    public void cerrar() {
-        this.estado.cerrar();
-    }
 }

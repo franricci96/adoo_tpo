@@ -5,10 +5,16 @@ import src.model.entities.OfertaLaboral;
 import src.model.entities.Postulante;
 import src.model.entities.Usuario;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 /**
  *
  */
 public class UserController {
+    private List<Usuario> usuarios = new ArrayList<>();
+
     public UserController() {
     }
 
@@ -25,7 +31,8 @@ public class UserController {
 
     }
 
-    public boolean register(String nombre, String password, String codigo) {
+    public boolean register(Usuario usuario) {
+        this.usuarios.add(usuario);
         return true;
     }
 
@@ -35,6 +42,16 @@ public class UserController {
 
     public void seleccionarTareas() {
 
+    }
+
+    public List<Postulante> obtenerPostulantes() {
+        List<Postulante> list = new ArrayList<>();
+        for (Usuario user : this.usuarios) {
+            if (user.getClass().isInstance(Postulante.class)) {
+                list.add((Postulante) user);
+            }
+        }
+        return list;
     }
 
 }

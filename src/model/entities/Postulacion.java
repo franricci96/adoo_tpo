@@ -11,5 +11,6 @@ import java.time.LocalDateTime;
 public class Postulacion {
     private LocalDateTime fechaPostulacion;
     private Postulante postulante;
+    private String cv;
     private int remuneracion;
 }

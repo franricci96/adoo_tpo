@@ -18,7 +18,6 @@ public class AdapterImagen {
      * @return
      */
     public String exportar(OfertaLaboral oferta) {
-        // TODO implement here
         return "";
     }
 

@@ -3,20 +3,24 @@ package src.model.entities;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.experimental.SuperBuilder;
 
 
+import java.time.LocalDateTime;
 import java.util.*;
 
 @EqualsAndHashCode(callSuper = true)
-@Builder
+@SuperBuilder
 @Data
 public class Postulante extends Usuario {
     private String nombre;
-    private Date fechaNacimiento;
+    private LocalDateTime fechaNacimiento;
     private String cuil;
     private String nacionalidad;
-    private List<Postulacion> postulaciones;
-    private List<OfertaLaboral> favs;
+    @Builder.Default
+    private List<Postulacion> postulaciones = new ArrayList<>();
+    private List<OfertaLaboral> favoritos;
     private List<Habilidad> habilidades;
+    private List<Categoria> intereses;
     private List<Idioma> idiomas;
 }

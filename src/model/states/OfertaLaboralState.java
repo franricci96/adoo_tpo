@@ -1,6 +1,8 @@
 package src.model.states;
 
 import src.model.entities.OfertaLaboral;
+import src.model.entities.Postulacion;
+import src.model.entities.Postulante;
 
 public abstract class OfertaLaboralState {
 
@@ -9,7 +11,7 @@ public abstract class OfertaLaboralState {
         this.ofertaLaboral = ofertaLaboral;
     }
 
-    public abstract void postularse();
-    public abstract void abrir();
+    public abstract Postulacion postularse(Postulante postulante, int remuneracion, String cv);
+    public abstract void abrir(int diasDeVigencia);
     public abstract void cerrar();
 }
