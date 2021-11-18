@@ -20,6 +20,10 @@ public class ReporteController {
         this.ofertaLaboralController = ofertaLaboralController;
     }
 
+    public ReporteController() {
+
+    }
+
     public List<Categoria> categoriasMasSeleccionadas(int cantidad) {
         List<OfertaLaboral> ofertasLaborales = this.ofertaLaboralController.obtenerOfertas(null);
 
@@ -36,7 +40,6 @@ public class ReporteController {
 
     public OfertaLaboral ofertaLaboralMasPostulantes(LocalDateTime fecha) {
         List<OfertaLaboral> ofertasLaborales = this.ofertaLaboralController.obtenerOfertas(null);
-
         return ofertasLaborales
                 .stream()
                 .filter(of -> of.getPostulaciones() != null)
@@ -45,13 +48,33 @@ public class ReporteController {
     }
 
     public String trabajoMasAccesible() {
-        // TODO implement here
-        return "";
+        List<OfertaLaboral> trabajosMasAccesibles = new ArrayList<OfertaLaboral>();
+        List<OfertaLaboral> ofertasLaborales = this.ofertaLaboralController.obtenerOfertas(null);
+        for (int i = 0; i<ofertasLaborales.size(); i++) {
+            OfertaLaboral of = ofertasLaborales.get(i);
+            if(of.getTipo() == "part time" && of.getModalidad() == "remoto"){
+                trabajosMasAccesibles.add(of);
+            }
+        }
+
+        OfertaLaboral aux = trabajosMasAccesibles.get(0);
+        for (OfertaLaboral  trabajoMasAccesible : trabajosMasAccesibles){
+            if(aux.getTareas().size() <= trabajoMasAccesible.getTareas().size() && aux.getRequisitos().size() <= trabajoMasAccesible.getRequisitos().size()){
+                aux = trabajoMasAccesible;
+            }
+        }
+        return aux.getTrabajo();
     }
 
     public OfertaLaboral ofertaMasExigente() {
-        // TODO implement here
-        return null;
+        List<OfertaLaboral> ofertasLaborales = this.ofertaLaboralController.obtenerOfertas(null);
+
+        return ofertasLaborales
+                .stream()
+                .filter(of -> of.getRequisitos() != null)
+                .max(Comparator.comparingInt(a -> a.getRequisitos().size()))
+                .orElseThrow(() -> new IllegalStateException("No existen ofertas laborales"));
     }
+}
 
 }

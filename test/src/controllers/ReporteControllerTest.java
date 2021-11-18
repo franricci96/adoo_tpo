@@ -1,6 +1,7 @@
 package test.src.controllers;
 
 import org.junit.Assert;
+import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import src.controllers.OfertaLaboralController;
@@ -13,6 +14,8 @@ import src.model.entities.Postulante;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 class ReporteControllerTest {
 
@@ -73,4 +76,5 @@ class ReporteControllerTest {
                 this.rc.ofertaLaboralMasPostulantes(LocalDateTime.now()).getTitulo());
 
     }
+
 }

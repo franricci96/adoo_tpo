@@ -1,7 +1,7 @@
 package src.model.entities;
 
-import lombok.Builder;
 import lombok.Data;
+import lombok.Builder;
 import src.model.states.AbiertoState;
 import src.model.states.CerradoState;
 import src.model.states.OfertaLaboralState;
@@ -9,6 +9,7 @@ import src.model.states.OfertaLaboralState;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 @Builder
@@ -24,9 +25,10 @@ public class OfertaLaboral {
     private String tipo;
     private Double sueldo;
     private String lugar;
-    private String requisitos;
+    private List<String> requisitos;
     private LocalDateTime fechaCreacion;
     private String trabajo;
+    private List<String> tareas;
     private List<Categoria> categorias;
     private List<Postulacion> postulaciones;
 
