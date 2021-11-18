@@ -15,9 +15,9 @@ public class Main {
     public static void main(String[] args) {
 
         //Controllers
-        UserController uc = new UserController();
-        OfertaLaboralController olc = new OfertaLaboralController(uc);
-        ReporteController rc = new ReporteController(olc);
+        UserController uc = UserController.getInstance();
+        OfertaLaboralController olc = OfertaLaboralController.getInstance();
+        ReporteController rc = new ReporteController();
 
         Categoria sistemas = new Categoria("Sistemas");
         Categoria rrhh = new Categoria("RRHH");
@@ -33,7 +33,6 @@ public class Main {
                 .cuit("asdasdads")
                 .build();
 
-        //TODO Analizar descripcion que puede ser string o lista de items.
         OfertaLaboral ofl1 = OfertaLaboral
                 .builder()
                 .titulo("BackEnd Developer Senior")

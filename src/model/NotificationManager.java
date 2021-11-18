@@ -1,6 +1,7 @@
 package src.model;
 
 import lombok.Data;
+import src.controllers.UserController;
 import src.model.entities.Categoria;
 import src.model.entities.Notificacion;
 import src.model.entities.OfertaLaboral;
@@ -13,12 +14,11 @@ import java.util.stream.Collectors;
 public class NotificationManager {
 
     private EnviarNotificacion enviarNotificacion = new EnviarNotificacion();
-
-    //TODO ver este caso de postulantes, de donde los levanto
-    private List<Postulante> postulantes = List.of();
+    private UserController userController = UserController.getInstance();
 
     public void notificarNuevaOferta(OfertaLaboral ofertaLaboral) {
-        for (Postulante post : postulantes) {
+
+        for (Postulante post : userController.obtenerPostulantes()) {
             List<Categoria> categoriasEnFavoritos = post.getFavoritos().stream().map(OfertaLaboral::getCategoria).collect(Collectors.toList());
             if (categoriasEnFavoritos.contains(ofertaLaboral.getCategoria())) {
                 enviarNotificacion.enviarNotificacion(

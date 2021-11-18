@@ -6,13 +6,23 @@ import src.model.entities.Postulante;
 import src.model.entities.Usuario;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 /**
  *
  */
-public class UserController {
+public final class UserController {
+    private static UserController instance;
+
+    public static UserController getInstance() {
+        if (instance == null) {
+            instance = new UserController();
+        }
+        return instance;
+    }
+
     private List<Usuario> usuarios = new ArrayList<>();
 
     public UserController() {
@@ -45,13 +55,11 @@ public class UserController {
     }
 
     public List<Postulante> obtenerPostulantes() {
-        List<Postulante> list = new ArrayList<>();
-        for (Usuario user : this.usuarios) {
-            if (user.getClass().isInstance(Postulante.class)) {
-                list.add((Postulante) user);
-            }
-        }
-        return list;
+        return this.usuarios
+                .stream()
+                .filter(u -> u instanceof Postulante)
+                .map(u -> (Postulante) u)
+                .collect(Collectors.toList());
     }
 
 }

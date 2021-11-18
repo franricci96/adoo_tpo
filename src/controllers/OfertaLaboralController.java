@@ -1,9 +1,8 @@
 package src.controllers;
 
 import src.model.Exportador;
-import src.model.ExportadorImagen;
+import src.model.ExportadorImagenEstrategia;
 import src.model.NotificationManager;
-import src.model.entities.Empresa;
 import src.model.entities.OfertaLaboral;
 import src.model.entities.Postulacion;
 import src.model.entities.Postulante;
@@ -15,15 +14,19 @@ import java.util.stream.Collectors;
 
 public class OfertaLaboralController {
 
-    private EstrategiaDeGeneracion estrategiaDeGeneraciondeImagen;
-    private Exportador exportador = new ExportadorImagen();
-    private List<OfertaLaboral> ofertas = new ArrayList();
-    private UserController uc;
-    private NotificationManager notificationManager = new NotificationManager();
-
-    public OfertaLaboralController(UserController uc) {
-        this.uc = uc;
+    private static OfertaLaboralController instance;
+    public static OfertaLaboralController getInstance(){
+        if(instance == null){
+            instance = new OfertaLaboralController();
+        }
+        return instance;
     }
+
+    private EstrategiaDeGeneracion estrategiaDeGeneraciondeImagen;
+    private Exportador exportador = new ExportadorImagenEstrategia();
+    private List<OfertaLaboral> ofertas = new ArrayList();
+    private UserController uc = UserController.getInstance();
+    private NotificationManager notificationManager = new NotificationManager();
 
     public Postulacion postularse(Postulante postulante, OfertaLaboral ofertaLaboral, int remuneracion, String cv) {
         return ofertaLaboral.postularse(postulante, remuneracion, cv);

@@ -12,10 +12,9 @@ import java.util.stream.Collectors;
  */
 public class ReporteController {
 
-    private OfertaLaboralController ofertaLaboralController;
+    private OfertaLaboralController ofertaLaboralController = OfertaLaboralController.getInstance();
 
-    public ReporteController(OfertaLaboralController ofertaLaboralController) {
-        this.ofertaLaboralController = ofertaLaboralController;
+    public ReporteController() {
     }
 
     public List<Habilidad> categoriasMasSeleccionadas(int cantidad) {
@@ -29,7 +28,6 @@ public class ReporteController {
                 .map(Map.Entry::getKey)
                 .limit(cantidad)
                 .collect(Collectors.toList());
-//
     }
 
     public OfertaLaboral ofertaLaboralMasPostulantes(LocalDateTime fecha) {

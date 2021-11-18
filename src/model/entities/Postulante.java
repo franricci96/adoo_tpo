@@ -19,8 +19,12 @@ public class Postulante extends Usuario {
     private String nacionalidad;
     @Builder.Default
     private List<Postulacion> postulaciones = new ArrayList<>();
-    private List<OfertaLaboral> favoritos;
-    private List<Habilidad> habilidades;
-    private List<Categoria> intereses;
-    private List<Idioma> idiomas;
+    @Builder.Default
+    private List<OfertaLaboral> favoritos = new ArrayList<>();
+    @Builder.Default
+    private List<Habilidad> habilidades = new ArrayList<>();
+    @Builder.Default
+    private List<Categoria> intereses = new ArrayList<>();
+    @Builder.Default
+    private List<Idioma> idiomas = new ArrayList<>();
 }
