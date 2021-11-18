@@ -2,9 +2,8 @@ package src.model.entities;
 
 import lombok.Builder;
 import lombok.Data;
-import src.model.NotificacionPorEmailListener;
+import src.model.NotificacionListener;
 import src.model.OfertaLaboralObserver;
-import src.model.states.CerradoState;
 import src.model.states.OfertaLaboralState;
 
 import java.time.LocalDateTime;
@@ -17,7 +16,7 @@ import java.util.List;
 public class OfertaLaboral {
 
     @Builder.Default
-    public List<OfertaLaboralObserver> observers = List.of(new NotificacionPorEmailListener());
+    public List<OfertaLaboralObserver> observers = List.of(new NotificacionListener());
     private OfertaLaboralState estado;
     private Empresa creador;
     private String titulo;

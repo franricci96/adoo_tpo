@@ -55,7 +55,7 @@ public class Main {
                 .modalidadDeContrato(ModalidadDeContrato.fullTime)
                 .tipoDeTrabajo(TipoDeTrabajo.remoto)
                 .lugar("")
-                .categoria(sistemas)
+                .categoria(rrhh)
                 .tareas(List.of("unasolatarea"))
                 .requisitos(List.of(req1, req2, req3))
                 .sueldo(250000)

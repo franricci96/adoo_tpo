@@ -2,6 +2,7 @@ package src.controllers;
 
 import src.model.Exportador;
 import src.model.ExportadorImagen;
+import src.model.NotificationManager;
 import src.model.entities.Empresa;
 import src.model.entities.OfertaLaboral;
 import src.model.entities.Postulacion;
@@ -18,6 +19,7 @@ public class OfertaLaboralController {
     private Exportador exportador = new ExportadorImagen();
     private List<OfertaLaboral> ofertas = new ArrayList();
     private UserController uc;
+    private NotificationManager notificationManager = new NotificationManager();
 
     public OfertaLaboralController(UserController uc) {
         this.uc = uc;
@@ -34,7 +36,7 @@ public class OfertaLaboralController {
         }
         ofertaLaboral.setEstado(new CerradoState(ofertaLaboral));
         this.ofertas.add(ofertaLaboral);
-        this.notificarNuevaOferta(ofertaLaboral);
+        this.notificationManager.notificarNuevaOferta(ofertaLaboral);
     }
 
     public List<Postulacion> verPostulaciones(OfertaLaboral ofertaLaboral) {
@@ -80,11 +82,6 @@ public class OfertaLaboralController {
         String titulo = String.format("AutoGenTitulo: %s - %s ", oferta.getCategoria().toString(), oferta.getTipoDeTrabajo());
         titulo += oferta.getLugar();
         oferta.setTitulo(titulo);
-    }
-
-    private void notificarNuevaOferta(OfertaLaboral oferta) {
-        List<Postulante> postulantes = this.uc.obtenerPostulantes();
-        //TODO no llegamos.
     }
 
 
